@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4"
+      main_tree_to_execute="DoWave">
+  <BehaviorTree ID="DoWave">
+    <Sequence>
+      <SubTree ID="MoveToEndPosition"/>
+      <SkipUnlessUpdated entry="@repeat">
+        <Repeat num_cycles="{@repeat}">
+          <Sequence>
+            <SubTree ID="StartMovingBack"/>
+            <RetryUntilSuccessful num_attempts="-1">
+              <PositionInRange high="0.3"
+                               low="-0.3"/>
+            </RetryUntilSuccessful>
+            <SubTree ID="MoveToEndPosition"/>
+          </Sequence>
+        </Repeat>
+      </SkipUnlessUpdated>
+      <SubTree ID="MoveToCenterPosition"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="MoveToCenterPosition">
+    <Sequence>
+      <SubTree ID="StartMovingBack"/>
+      <RetryUntilSuccessful num_attempts="-1">
+        <HandIsCentered/>
+      </RetryUntilSuccessful>
+      <StopMovement/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="MoveToEndPosition">
+    <Sequence>
+      <MoveToTheSide/>
+      <RetryUntilSuccessful num_attempts="-1">
+        <HandReachedEndPosition/>
+      </RetryUntilSuccessful>
+      <StopMovement/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="StartMovingBack">
+    <Fallback>
+      <Sequence>
+        <PositionInRange high="0.0"
+                         low="-1.0"/>
+        <VelocityPub velocity="1.0"/>
+      </Sequence>
+      <VelocityPub velocity="-1.0"/>
+    </Fallback>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Condition ID="HandIsCentered"/>
+    <Condition ID="HandReachedEndPosition"/>
+    <Condition ID="MoveToTheSide"/>
+    <Condition ID="PositionInRange">
+      <input_port name="high"
+                  default="1.000000"
+                  type="double">Upper bound of the position range</input_port>
+      <input_port name="low"
+                  default="-1.000000"
+                  type="double">Lower bound of the position range</input_port>
+    </Condition>
+    <Decorator ID="SkipUnlessUpdated">
+      <input_port name="entry"
+                  type="BT::Any">Entry to check</input_port>
+    </Decorator>
+    <Condition ID="StopMovement"/>
+    <Condition ID="VelocityPub">
+      <input_port name="velocity"
+                  default="0.000000"
+                  type="double">Velocity command (-1.0 to 1.0)</input_port>
+    </Condition>
+  </TreeNodesModel>
+
+</root>

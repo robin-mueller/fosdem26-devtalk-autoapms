@@ -1,0 +1,23 @@
+#
+# Behavior tree nodes for controlling robot hand movement to the right side.
+#
+
+MoveToTheSide:
+  class_name: fosdem26_autoapms_behavior::VelocityPub
+  description: "Action node that commands the robot hand to move to the right"
+  topic: /robot/velocity_cmd
+  port_default:
+    velocity: 1.0
+  hidden_ports:
+    - velocity
+
+HandReachedEndPosition:
+  class_name: fosdem26_autoapms_behavior::PositionInRange
+  description: "Condition node that checks if the robot hand has reached the right end position"
+  topic: /robot/position
+  port_default:
+    low: 0.95
+    high: 1.0
+  hidden_ports:
+    - low
+    - high

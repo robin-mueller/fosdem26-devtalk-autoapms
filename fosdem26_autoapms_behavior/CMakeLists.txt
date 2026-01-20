@@ -19,17 +19,34 @@ target_link_libraries(behavior_tree_nodes PUBLIC
   ${fosdem26_autoapms_interfaces_TARGETS}
 )
 
-# Register behavior tree nodes
+# Register common behavior tree nodes
 auto_apms_behavior_tree_register_nodes(behavior_tree_nodes
   "fosdem26_autoapms_behavior::VelocityPub"
   "fosdem26_autoapms_behavior::PositionInRange"
-  NODE_MANIFEST config/nodes.yaml
 )
 
-# Register behavior trees
+# Register nodes for specific use cases
+auto_apms_behavior_tree_register_nodes(wave_left
+  NODE_MANIFEST
+  config/common_nodes.yaml
+  config/wave_left_nodes.yaml
+)
+auto_apms_behavior_tree_register_nodes(wave_right
+  NODE_MANIFEST
+  config/common_nodes.yaml
+  config/wave_right_nodes.yaml
+)
+
+# Register behavior trees for specific use cases
 auto_apms_behavior_tree_register_trees(
-  behavior/tree/wave_hand.xml
-  NODE_MANIFEST "${PROJECT_NAME}::behavior_tree_nodes"
+  behavior/tree/generic_wave.xml
+  ALIAS_NAMESPACE "wave_left"
+  NODE_MANIFEST "${PROJECT_NAME}::wave_left"
+)
+auto_apms_behavior_tree_register_trees(
+  behavior/tree/generic_wave.xml
+  ALIAS_NAMESPACE "wave_right"
+  NODE_MANIFEST "${PROJECT_NAME}::wave_right"
 )
 
 # Install library
