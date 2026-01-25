@@ -49,9 +49,30 @@ auto_apms_behavior_tree_register_trees(
   NODE_MANIFEST "${PROJECT_NAME}::wave_right"
 )
 
+# Create shared library for custom build handler
+add_library(custom_build_handler SHARED
+  src/custom_build_handler.cpp
+)
+target_link_libraries(custom_build_handler PUBLIC
+  auto_apms_behavior_tree::auto_apms_behavior_tree
+)
+
+# Register the custom build handler plugin
+auto_apms_behavior_tree_register_build_handlers(custom_build_handler
+  "fosdem26_autoapms_behavior::CustomSequenceBuildHandler"
+)
+
+# Register behavior using custom build request format
+auto_apms_behavior_tree_register_behavior(
+  "l;l;r;r;l;r"
+  ALIAS "custom_wave"
+  BUILD_HANDLER "fosdem26_autoapms_behavior::CustomSequenceBuildHandler"
+  CATEGORY "custom"
+)
+
 # Install library
 install(
-  TARGETS behavior_tree_nodes
+  TARGETS behavior_tree_nodes custom_build_handler
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   RUNTIME DESTINATION bin

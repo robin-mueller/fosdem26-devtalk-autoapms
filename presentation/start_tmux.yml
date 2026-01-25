@@ -1,0 +1,11 @@
+name: demo
+tmux_options: -f ./tmux.conf
+
+startup_pane: 1
+
+windows:
+  - main:
+      layout: ebae,80x39,0,0[80x25,0,0,0,80x13,0,26,6]
+      panes:
+        - sleep 0.5 && ros2 run fosdem26_autoapms_robot robot_hand_node.py
+        - PS1='\[\033[1;34m\]$\[\033[0m\] ' && clear && history -ps "$COMMAND_TO_RUN"

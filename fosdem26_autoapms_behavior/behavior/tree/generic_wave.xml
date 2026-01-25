@@ -5,16 +5,8 @@
     <Sequence>
       <SubTree ID="MoveToEndPosition"/>
       <SkipUnlessUpdated entry="@repeat">
-        <Repeat num_cycles="{@repeat}">
-          <Sequence>
-            <SubTree ID="StartMovingBack"/>
-            <RetryUntilSuccessful num_attempts="-1">
-              <PositionInRange high="0.3"
-                               low="-0.3"/>
-            </RetryUntilSuccessful>
-            <SubTree ID="MoveToEndPosition"/>
-          </Sequence>
-        </Repeat>
+        <SubTree ID="RepeatWave"
+                 repeat="{@repeat}"/>
       </SkipUnlessUpdated>
       <SubTree ID="MoveToCenterPosition"/>
     </Sequence>
@@ -38,6 +30,19 @@
       </RetryUntilSuccessful>
       <StopMovement/>
     </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="RepeatWave">
+    <Repeat num_cycles="{repeat}">
+      <Sequence>
+        <SubTree ID="StartMovingBack"/>
+        <RetryUntilSuccessful num_attempts="-1">
+          <PositionInRange high="0.3"
+                           low="-0.3"/>
+        </RetryUntilSuccessful>
+        <SubTree ID="MoveToEndPosition"/>
+      </Sequence>
+    </Repeat>
   </BehaviorTree>
 
   <BehaviorTree ID="StartMovingBack">

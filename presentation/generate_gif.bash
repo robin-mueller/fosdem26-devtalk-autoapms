@@ -1,0 +1,1 @@
+agg $1.cast $1.gif --last-frame-duration 0

@@ -4,7 +4,7 @@
 
 MoveToTheSide:
   class_name: fosdem26_autoapms_behavior::VelocityPub
-  description: "Action node that commands the robot hand to move to the left"
+  description: "Condition node that commands the robot hand to move to the left"
   topic: /robot/velocity_cmd
   port_default:
     velocity: -1.0
