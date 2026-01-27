@@ -59,14 +59,14 @@ target_link_libraries(custom_build_handler PUBLIC
 
 # Register the custom build handler plugin
 auto_apms_behavior_tree_register_build_handlers(custom_build_handler
-  "fosdem26_autoapms_behavior::CustomSequenceBuildHandler"
+  "fosdem26_autoapms_behavior::CustomBuilder"
 )
 
 # Register behavior using custom build request format
 auto_apms_behavior_tree_register_behavior(
   "l;l;r;r;l;r"
   ALIAS "custom_wave"
-  BUILD_HANDLER "fosdem26_autoapms_behavior::CustomSequenceBuildHandler"
+  BUILD_HANDLER "fosdem26_autoapms_behavior::CustomBuilder"
   CATEGORY "custom"
 )
 

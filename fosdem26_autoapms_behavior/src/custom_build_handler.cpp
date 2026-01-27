@@ -28,7 +28,7 @@ namespace fosdem26_autoapms_behavior
  * loading the appropriate node manifest (wave_left or wave_right) to configure the movement
  * direction.
  */
-class CustomSequenceBuildHandler : public auto_apms_behavior_tree::TreeBuildHandler
+class CustomBuilder : public auto_apms_behavior_tree::TreeBuildHandler
 {
   enum class Direction
   {
@@ -109,7 +109,7 @@ public:
       doc.newTreeFromResource("fosdem26_autoapms_behavior::wave_left::MoveToCenterPosition");
 
     // Create the root tree with a sequence
-    TreeDocument::TreeElement tree = doc.newTree("CustomSequence").makeRoot();
+    TreeDocument::TreeElement tree = doc.newTree("CustomBehavior").makeRoot();
     model::Sequence sequence = tree.insertNode<model::Sequence>();
 
     // Insert subtree calls for each direction in the sequence
@@ -121,7 +121,7 @@ public:
     }
 
     // Print tree
-    RCLCPP_INFO(logger_, "Constructed behavior tree:\n%s", doc.writeToString().c_str());
+    // RCLCPP_INFO(logger_, "Constructed behavior tree:\n%s", doc.writeToString().c_str());
 
     return tree;
   }
@@ -130,4 +130,4 @@ public:
 }  // namespace fosdem26_autoapms_behavior
 
 // Make the build handler discoverable for the class loader
-AUTO_APMS_BEHAVIOR_TREE_REGISTER_BUILD_HANDLER(fosdem26_autoapms_behavior::CustomSequenceBuildHandler)
+AUTO_APMS_BEHAVIOR_TREE_REGISTER_BUILD_HANDLER(fosdem26_autoapms_behavior::CustomBuilder)
