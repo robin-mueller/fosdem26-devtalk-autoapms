@@ -41,7 +41,7 @@ public:
   using TreeBuildHandler::TreeBuildHandler;
 
   bool setBuildRequest(
-    const std::string & build_request, const std::string & /*entrypoint*/,
+    const std::string & build_request, const std::string & /*entry_point*/,
     const NodeManifest & /*node_manifest*/) override final
   {
     // Parse the build request string into a vector of directions

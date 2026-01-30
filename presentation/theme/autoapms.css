@@ -1,0 +1,342 @@
+/* @theme autoapms */
+/* 
+ * AutoAPMS MarpX Theme
+ * 
+ * A custom theme for AutoAPMS presentations, inspired by the 
+ * VitePress documentation site styling at https://autoapms.github.io/auto-apms-guide/
+ * 
+ * Created for FOSDEM 2026 - Robotics and Simulation Developer Room
+ * Author: Robin Müller
+ */
+
+@import "marpx";
+
+:root {
+  /*------------< AUTOAPMS COLOR PALETTE >---------------------------------*/
+  /*  Colors from: https://github.com/AutoAPMS/auto-apms-guide/.vitepress/theme/custom.css */
+
+  /* Primary brand colors (cyan/teal) */
+  --autoapms-primary: #05b8cf;
+  /* --c-primary-brand */
+  --autoapms-primary-light: #2fcce0;
+  /* Dark mode brand-1 */
+  --autoapms-primary-dark: #067ca0;
+  /* --vp-c-brand-2 */
+  --autoapms-primary-darker: #03b9da;
+  /* --vp-c-brand-1 */
+  --autoapms-primary-soft: rgba(5, 184, 207, 0.14);
+  /* --vp-c-brand-soft */
+
+  /* Secondary brand color (magenta/pink) */
+  --autoapms-secondary: #f02a6c;
+  /* --c-secondary-brand */
+
+  /* Background colors */
+  --autoapms-bg-light: #ffffff;
+  --autoapms-bg-dark: #1b1b1f;
+  --autoapms-bg-soft: #373e44;
+  --autoapms-bg-mute: #e4e4e7;
+
+  /* Text colors */
+  --autoapms-text-primary: #ecece6;
+  --autoapms-text-secondary: #98989f;
+  --autoapms-text-muted: #6a6a71;
+  --autoapms-text-light: #ffffff;
+
+  /* Code/technical elements */
+  --autoapms-code-bg: #faf6f7;
+  --autoapms-code-text: var(--autoapms-primary-light);
+
+  /* Accent colors for variety */
+  --autoapms-accent-warning: #f97316;
+  --autoapms-accent-info: #3b82f6;
+
+  --marpx-theme-figure-captiontext-color: var(--autoapms-secondary);
+
+  /*------------< MARPX GREY OVERRIDES >---------------------------------*/
+  --marpx-color-light-grey: #8e8e93;
+  --marpx-color-dark-grey: #1b1b1f;
+
+  /*------------< CORE THEME PARAMETERS >---------------------------------*/
+
+  /* General theme settings */
+  --marpx-theme-font-family: "Fira Sans", "Fira Sans Condensed", Inter,
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --marpx-theme-color: var(--autoapms-primary);
+  --marpx-theme-background-color: linear-gradient(120deg,rgba(27, 27, 31, 1) 87%, rgb(6, 124, 160) 200%);;
+
+  /* Text colors */
+  --marpx-theme-font-color: var(--autoapms-text-primary);
+  --marpx-theme-bold-color: var(--autoapms-primary);
+  --marpx-theme-chapter-background-color: var(--autoapms-bg-dark);
+  --marpx-theme-chapter-h1-font-color: var(--autoapms-text-primary);
+  --marpx-theme-chapter-h2-font-color: var(--autoapms-text-primary);
+
+  /* Headings */
+  --marpx-theme-h1-color: var(--autoapms-text-primary);
+  --marpx-theme-h1-bold-color: var(--autoapms-primary);
+  --marpx-theme-h2-color: var(--autoapms-text-primary);
+  --marpx-theme-subtitle-color: var(--autoapms-text-secondary);
+
+  /* Specific elements */
+  --marpx-theme-code-color: var(--autoapms-primary);
+  --marpx-theme-highlight-color: rgba(66, 95, 99, 0.2);
+  /* Light cyan highlight */
+  --marpx-color-footnote-mark: var(--autoapms-secondary);
+  --marpx-theme-footnote-mark-color: var(--autoapms-secondary);
+
+  /* Captions and branding */
+  --marpx-theme-figure-captiontext: "Fig. ";
+  --marpx-theme-table-captiontext: "Table ";
+  --marpx-theme-brandlogo: " © Robin Müller - Technical University Darmstadt";
+
+  /*------------< TABLE OF CONTENTS PARAMETERS >---------------------------------*/
+  --marpx-theme-toc-color: var(--autoapms-primary-dark);
+  --marpx-theme-toc-background-color: var(--autoapms-bg-soft);
+
+  /*------------< TITLE SLIDE PARAMETERS >-----------------------------*/
+
+  /* Font sizes */
+  --marpx-title_academic-title-size: 150%;
+  --marpx-title_academic-subtitle-size: 100%;
+  --marpx-title_academic-author-size: 115%;
+  --marpx-title_academic-date-size: 95%;
+  --marpx-title_academic-institute-size: 85%;
+
+  /* Typography */
+  --marpx-title_academic-letter-spacing: 0.5px;
+  --marpx-title_academic-title-font-weight: 600;
+
+  /* Colors */
+  --marpx-title_academic-title-color: var(--autoapms-text-primary);
+  --marpx-title_academic-subtitle-color: var(--autoapms-text-secondary);
+  --marpx-title_academic-author-color: var(--autoapms-primary);
+  --marpx-title_academic-font-color: var(--autoapms-text-secondary);
+  --marpx-title_academic-background-color: var(--autoapms-bg-dark);
+  --marpx-title_academic-border-color: var(--autoapms-primary);
+
+  /*------------< TABLE COMPONENT PARAMETERS >---------------------------------*/
+
+  /* Colors */
+  --marpx-table-header-background-color: var(--autoapms-primary-soft);
+  --marpx-table-header-color-color: var(--autoapms-text-light);
+  --marpx-table-border-top-color: var(--autoapms-primary);
+  --marpx-table-border-bottom-color: var(--autoapms-bg-mute);
+  --marpx-table-nth-child-color-color: var(--autoapms-bg-dark);
+  --marpx-table-hover-color: var(--autoapms-text-primary);
+  --marpx-table-hover-background-color: rgba(5, 184, 207, 0.15);
+  /* Light cyan */
+
+  /* Typography */
+  --marpx-table-font-size: 22px;
+  --marpx-table-font-family: inherit;
+
+  /*------------< QUOTE COMPONENT PARAMETERS >---------------------------------*/
+
+  /* Light quote variant */
+  --marpx-quote-font-family: "Fira Sans", Georgia, serif;
+  --marpx-quote-background-color: var(--autoapms-bg-dark);
+  --marpx-quote-paragraph-background-color: var(--autoapms-bg-soft);
+  --marpx-quote-bold-color: var(--autoapms-primary-dark);
+
+  /* Dark quote variant */
+  --marpx-quote_dark-font: "Fira Sans", Georgia, serif;
+  --marpx-quote_dark-font-color: var(--autoapms-text-light);
+  --marpx-quote_dark-color-background: var(--autoapms-primary-dark);
+  --marpx-quote_dark-color-paragraph-background: var(--autoapms-primary-dark);
+  --marpx-quote_dark-bold-color: #e0f7fa;
+
+  /*------------< REFERENCES COMPONENT PARAMETERS >---------------------------------*/
+  --marpx-references-bold-color: var(--autoapms-primary);
+  --marpx-references-background-color: var(--autoapms-bg-soft);
+  --marpx-references-header-color: var(--autoapms-primary-dark);
+}
+
+/*------------< CODE STYLING >---------------------------------*/
+
+section code:not(pre code) {
+  color: var(--autoapms-code-text);
+  border: none;
+  padding: 1px 8px;
+  font-size: 0.9em;
+  font-family: "JetBrains Mono", Consolas, Monaco, monospace !important;
+  display: inline-block;
+}
+
+section pre {
+  background: var(--autoapms-bg-soft);
+  border-radius: 8px;
+  border-color: transparent;
+  border-left: 4px solid var(--autoapms-primary);
+  padding: 10px 15px;
+}
+
+/*------------< TITLE SLIDE STYLING >---------------------------------*/
+
+section.title-academic .title,
+section.title-academic>h1 {
+  width: 60%;
+  padding-bottom: 15px !important;
+  /* distance from the title to the underline below it */
+
+  line-height: 1.2 !important;
+  font-size: var(--marpx-title_academic-title-size);
+  letter-spacing: var(--marpx-title_academic-letter-spacing);
+  font-weight: var(--marpx-title_academic-title-font-weight);
+  color: var(--marpx-title_academic-title-color);
+  border-bottom: 1px solid var(--marpx-title_academic-border-color) !important;
+}
+
+/*------------< FOOTER LOGO STYLING >---------------------------------*/
+
+footer img {
+  position: fixed;
+  top: 52px;
+  right: 80px;
+  width: 180px;
+  display: block;
+}
+
+.next-to-logo img {
+  position: fixed;
+  top: 30px;
+  right: 300px;
+  display: block;
+}
+
+/*------------< BOX STYLING >---------------------------------*/
+
+box {
+
+  border: none;
+  /* cria a borda */
+  padding: 15px;
+  /* espaçamento interno */
+  margin: 15px auto;
+  /* espaçamento externo */
+  display: inline-block;
+  /* garante que a caixa se ajuste ao conteúdo */
+  border-radius: 10px;
+  /* cantos arredondados (opcional) */
+  background-color: var(--autoapms-bg-soft);
+  /* cor de fundo (opcional) */
+  text-align: center;
+  /* centraliza o conteúdo dentro da caixa */
+  box-shadow: 0 8px 15px rgba(8, 8, 8, 0.192);
+}
+
+bbox {
+
+  border: none;
+  /* cria a borda */
+  padding: 25px;
+  /* espaçamento interno */
+  margin: 50px auto;
+  /* espaçamento externo */
+  display: inline-block;
+  /* garante que a caixa se ajuste ao conteúdo */
+  border-radius: 10px;
+  /* cantos arredondados (opcional) */
+  background-color: var(--autoapms-bg-mute);
+  /* cor de fundo (opcional) */
+  text-align: center;
+  /* centraliza o conteúdo dentro da caixa */
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.08);
+}
+
+.box {
+
+  border: none;
+  /* cria a borda */
+  padding: 20px;
+  /* espaçamento interno */
+  /* margin: 50px auto;          espaçamento externo */
+  display: inline-block;
+  /* garante que a caixa se ajuste ao conteúdo */
+  border-radius: 6px;
+  /* cantos arredondados (opcional) */
+  background-color: var(--autoapms-bg-soft);
+  /* cor de fundo (opcional) */
+  text-align: center;
+  /* centraliza o conteúdo dentro da caixa */
+}
+
+/*------------< CONTAINER STYLING >---------------------------------*/
+
+.container {
+  background: var(--autoapms-bg-soft);
+}
+
+/*------------< PAGINATION STYLING >---------------------------------*/
+
+section::after {
+  background-color: transparent;
+  bottom: 22px;
+  color: var(--marpx-theme-color);
+  content: attr(data-marpit-pagination);
+  font-size: 14pt;
+  left: 80px;
+  margin: 0;
+  padding: 2px 8px;
+  position: absolute;
+}
+
+/*------------< CUSTOM STYLING >---------------------------------*/
+
+.inline-images {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+/* 
+!================================================================================
+?-----------------------< CHAPTER >----------------------- 
+!================================================================================
+*/
+
+section.chapter {
+  padding-left: 80px;
+  background-image: none;
+  background-color: var(--marpx-theme-chapter-background-color);
+}
+
+section.chapter>h1 {
+  position: absolute;
+  top: 38px;
+  color: var(--marpx-theme-chapter-h1-font-color);
+  font-size: 54pt;
+  font-weight: 700;
+  height: 47.5%;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+section.chapter-alt>h1::after,
+section.chapter>h1::after {
+  background: none repeat scroll 0 0 var(--autoapms-primary);
+  bottom: 10px;
+  left: 0px;
+  content: "";
+  display: block;
+  position: absolute;
+  height: 1px;
+  width: 100%;
+}
+
+section.chapter-alt>h2,
+section.chapter>h2 {
+  position: absolute;
+  top: 56%;
+  color: var(--marpx-theme-chapter-h2-font-color);
+  font-size: 28pt;
+  font-weight: 700;
+}
+
+section.chapter-alt::after,
+section.chapter::after {
+  opacity: 0;
+}
