@@ -12,6 +12,8 @@
   <depend>auto_apms_behavior_tree</depend>
   <depend>fosdem26_autoapms_interfaces</depend>
 
+  <exec_depend>auto_apms_ros2behavior</exec_depend>
+
   <export>
     <build_type>ament_cmake</build_type>
   </export>
