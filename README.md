@@ -1,6 +1,6 @@
 # fosdem26-devtalk-autoapms
 
-Source code for the examples presented at FOSDEM 2026 to demonstrate key features of AutoAPMS.
+Source code for the examples presented at FOSDEM 2026 to demonstrate key features of [AutoAPMS](https://github.com/AutoAPMS/auto-apms).
 
 If you want to learn more, visit the [FOSDEM archive for the talk](https://fosdem.org/2026/schedule/event/RUE39L-auto-apms/).
 
